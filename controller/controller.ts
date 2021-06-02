@@ -37,6 +37,41 @@ function createRocket1() {
     myrocket1.decelerate();
   });
 }
+function createRocket2() {
+  let myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
+  let rocket2Booster1 = new Propulsor("A01", 40, 0);
+  let rocket2Booster2 = new Propulsor("A02", 40, 0);
+  let rocket2Booster3 = new Propulsor("A03", 50, 0);
+  let rocket2Booster4 = new Propulsor("A04", 50, 0);
+  let rocket2Booster5 = new Propulsor("A05", 30, 0);
+  let rocket2Booster6 = new Propulsor("A06", 10, 0);
+
+  // let currentSpead = myrocket1.currentSpead;
+
+  myrocket2.addBooster(rocket2Booster1);
+  myrocket2.addBooster(rocket2Booster2);
+  myrocket2.addBooster(rocket2Booster3);
+  myrocket2.addBooster(rocket2Booster4);
+  myrocket2.addBooster(rocket2Booster5);
+  myrocket2.addBooster(rocket2Booster6);
+
+  myrocket2.maxSpeed();
+  myrocket2.displayInfo();
+  console.log(myrocket2);
+
+  accelButton.addEventListener("click", (e: Event) => {
+    rocket2img.classList.remove("first", "decel");
+    rocket2img.classList.add("accel");
+    setTimeout(landing, 2000);
+    myrocket2.accelerate();
+  });
+  decelButton.addEventListener("click", (e: Event) => {
+    rocket2img.classList.remove("accel", "first");
+    rocket2img.classList.add("decel");
+    setTimeout(landing, 2000);
+    myrocket2.decelerate();
+  });
+}
 
 // animationFunctions
 function chooseRocket() {
@@ -53,6 +88,7 @@ function chooseRocket() {
     rocket1.classList.add("hidden");
     rocket2.classList.remove("hidden");
     rocket2.classList.add("engine");
+    createRocket2();
   }
 }
 
@@ -73,17 +109,6 @@ function startRace() {
   }
 }
 
-// accelButton.addEventListener("click", (e: Event) => {
-//   rocket1img.classList.remove("first", "decel");
-//   rocket1img.classList.add("accel");
-//   setTimeout(landing, 2000);
-
-// });
-decelButton.addEventListener("click", (e: Event) => {
-  rocket1img.classList.remove("accel", "first");
-  rocket1img.classList.add("decel");
-  setTimeout(landing, 2000);
-});
 function landing() {
   rocket1img.classList.remove("accel", "first", "decel");
 }
