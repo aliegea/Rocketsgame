@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=R, initial-scale=1.0" />
+    <title>Rockets</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.15.3/css/all.css"
+      integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <video src="media/video/space.mp4" autoplay loop playsinline muted></video>
+    <div class="content">
+      <h1>Rockets Race</h1>
+      <label for="rocketColor" visually-hidden></label>
+      <select name="rocketColor" id="rocketColor">
+        <option value="Red">Red Rocket</option>
+        <option value="white">white Rocket</option>
+      </select>
+      <button
+        class="submit"
+        onclick="chooseRocket()"
+        type="button"
+        id="addRocket"
+      >
+        CHOOSE YOUR ROCKET <br />TO START
+      </button>
+    </div>
+    <div class="moonContent">
+      <div class="moon"></div>
+    </div>
+    <div class="rocket1" id="rocket1">
+      <img class="" id="rocket1img" src="media/images/redRocket.png" alt="" />
+    </div>
+    <div class="rocket2" id="rocket2">
+      <img class="" id="rocket2img" src="media/images/whiteRocket.png" alt="" />
+    </div>
+    <img class="earth" src="media/images/earth.png" alt="" />
+
+    <div id="pressA" class="hidden notHidenWhite">
+      <p>Ready to Start!</p>
+    </div>
+    <div class="controlPanel">
+      <div class="display" id="display">
+        <p class="tittleR" id="tittleR">YOUR ROCKET</p>
+        <div>
+          <p>Roket Id: <span id="rocketId" class="displayInfo"></span></p>
+          <p>Max Speed:<span id="maxSpeed" class="displayInfo"></span></p>
+          <p>
+            Current Speed:<span id="currentSpeed" class="displayInfo"></span>
+          </p>
+        </div>
+      </div>
+      <div class="accelerate">
+        <button class="control" id="accelButton">ACCELERATE</button>
+      </div>
+      <div class="decelerate">
+        <button class="control" id="decelButton">DECELERATE</button>
+      </div>
+    </div>
+    <button class="new" onclick="startRace()" type="button">START RACE</button>
+    <script src="../models/rocket1.js"></script>
+    <script src="../models/propulsor.js"></script>
+    <script src="../controller/controller.js"></script>
+  </body>
+</html>
