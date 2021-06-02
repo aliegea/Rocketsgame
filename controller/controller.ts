@@ -5,9 +5,9 @@ const rocket2img = <HTMLInputElement>document.getElementById("rocket2img");
 const ready = <HTMLDivElement>document.getElementById("pressA");
 const content = document.getElementById("content") as HTMLDivElement;
 const control = document.getElementById("panel") as HTMLDivElement;
+const command = document.getElementById("command") as HTMLButtonElement;
 const accelButton = document.getElementById("accelButton") as HTMLButtonElement;
 const decelButton = document.getElementById("decelButton") as HTMLButtonElement;
-const rocket1Id = "32WESSDS";
 
 // create rocket1
 function createRocket1() {
@@ -105,12 +105,14 @@ function startRace() {
     rocket1img.classList.add("start", "first");
     var audio = new Audio("../views/media/audio/rocket.mov");
     audio.play();
+    command.classList.remove("hidden");
   } else {
     rocket2.classList.remove("engine");
     rocket2.classList.add("move");
     rocket2img.classList.add("start");
     var audio = new Audio("../views/media/audio/rocket.mov");
     audio.play();
+    command.classList.remove("hidden");
   }
 }
 

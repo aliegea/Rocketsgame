@@ -157,9 +157,21 @@ button:hover {
   flex-direction: row;
   flex-wrap: nowrap;
   bottom: 5%;
-  right: 30%;
+  left: 41.5%;
   background: rgba(0, 0, 0, 0.6);
   border: 5px solid tomato;
+  border-radius: 30px;
+}
+.command {
+  position: absolute;
+  display: flex;
+  left: 40%;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  bottom: 25%;
+
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid tomato;
   border-radius: 30px;
 }
 
@@ -170,6 +182,10 @@ button:hover {
   border-radius: 20px;
   color: #fff;
   padding-left: 1em;
+}
+.displayInfo {
+  font-size: large;
+  color: darkorange;
 }
 
 .tittleR {

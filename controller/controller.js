@@ -6,9 +6,9 @@ var rocket2img = document.getElementById("rocket2img");
 var ready = document.getElementById("pressA");
 var content = document.getElementById("content");
 var control = document.getElementById("panel");
+var command = document.getElementById("command");
 var accelButton = document.getElementById("accelButton");
 var decelButton = document.getElementById("decelButton");
-var rocket1Id = "32WESSDS";
 // create rocket1
 function createRocket1() {
     var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
@@ -94,6 +94,7 @@ function startRace() {
         rocket1img.classList.add("start", "first");
         var audio = new Audio("../views/media/audio/rocket.mov");
         audio.play();
+        command.classList.remove("hidden");
     }
     else {
         rocket2.classList.remove("engine");
@@ -101,6 +102,7 @@ function startRace() {
         rocket2img.classList.add("start");
         var audio = new Audio("../views/media/audio/rocket.mov");
         audio.play();
+        command.classList.remove("hidden");
     }
 }
 function landing() {
