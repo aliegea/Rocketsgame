@@ -15,20 +15,26 @@
   </head>
   <body>
     <video src="media/video/space.mp4" autoplay loop playsinline muted></video>
-    <div class="content">
-      <h1>Rockets Race</h1>
-      <label for="rocketColor" visually-hidden></label>
+    <div class="tittle">
+      <div class="header"></div>
+      <div class="headertittle">
+        <h1>Rockets To the Moon</h1>
+      </div>
+      <div class="header"></div>
+    </div>
+    <div class="content" id="content">
+      <label for="rocketColor">CHOOSE YOUR ROCKET</label>
       <select name="rocketColor" id="rocketColor">
         <option value="Red">Red Rocket</option>
         <option value="white">white Rocket</option>
       </select>
       <button
-        class="submit"
+        class="buttonchoose"
         onclick="chooseRocket()"
         type="button"
         id="addRocket"
       >
-        CHOOSE YOUR ROCKET <br />TO START
+        CREATE MY ROCKET
       </button>
     </div>
     <div class="moonContent">
@@ -44,26 +50,35 @@
 
     <div id="pressA" class="hidden notHidenWhite">
       <p>Ready to Start!</p>
+      <button class="buttonchoose" onclick="startRace()" type="button">
+        START RACE
+      </button>
     </div>
-    <div class="controlPanel">
-      <div class="display" id="display">
-        <p class="tittleR" id="tittleR">YOUR ROCKET</p>
-        <div>
-          <p>Roket Id: <span id="rocketId" class="displayInfo"></span></p>
-          <p>Max Speed:<span id="maxSpeed" class="displayInfo"></span></p>
-          <p>
-            Current Speed:<span id="currentSpeed" class="displayInfo"></span>
-          </p>
+    <div class="hidden" id="panel">
+      <div class="controlPanel hidden" id="controlPanel">
+        <div class="display" id="display">
+          <p class="tittleR" id="tittleR">YOUR ROCKET</p>
+          <div>
+            <p>Roket Id: <span id="rocketId" class="displayInfo"></span></p>
+            <p>Max Speed:<span id="maxSpeed" class="displayInfo"></span></p>
+            <p>
+              Current Speed:<span id="currentSpeed" class="displayInfo"></span>
+            </p>
+          </div>
+        </div>
+        <div class="accelerate">
+          <button class="control" id="accelButton">ACCELERATE</button>
+        </div>
+        <div class="decelerate">
+          <button class="control" id="decelButton">DECELERATE</button>
         </div>
       </div>
-      <div class="accelerate">
-        <button class="control" id="accelButton">ACCELERATE</button>
-      </div>
-      <div class="decelerate">
-        <button class="control" id="decelButton">DECELERATE</button>
-      </div>
     </div>
-    <button class="new" onclick="startRace()" type="button">START RACE</button>
+    <button class="new" onclick="location.reload()" type="button">
+      NEW RACE
+    </button>
+
+    <!-- <button class="new" onclick="startRace()" type="button">START RACE</button> -->
     <script src="../models/rocket1.js"></script>
     <script src="../models/propulsor.js"></script>
     <script src="../controller/controller.js"></script>

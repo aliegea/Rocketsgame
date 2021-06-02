@@ -3,6 +3,8 @@ const rocket2 = <HTMLDivElement>document.getElementById("rocket2");
 const rocket1img = <HTMLInputElement>document.getElementById("rocket1img");
 const rocket2img = <HTMLInputElement>document.getElementById("rocket2img");
 const ready = <HTMLDivElement>document.getElementById("pressA");
+const content = document.getElementById("content") as HTMLDivElement;
+const control = document.getElementById("panel") as HTMLDivElement;
 const accelButton = document.getElementById("accelButton") as HTMLButtonElement;
 const decelButton = document.getElementById("decelButton") as HTMLButtonElement;
 const rocket1Id = "32WESSDS";
@@ -22,6 +24,7 @@ function createRocket1() {
 
   myrocket1.maxSpeed();
   myrocket1.displayInfo();
+  control.classList.remove("hidden");
   console.log(myrocket1);
 
   accelButton.addEventListener("click", (e: Event) => {
@@ -39,7 +42,7 @@ function createRocket1() {
 }
 function createRocket2() {
   let myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
-  let rocket2Booster1 = new Propulsor("A01", 40, 0);
+  let rocket2Booster1 = new Propulsor("A01", 30, 0);
   let rocket2Booster2 = new Propulsor("A02", 40, 0);
   let rocket2Booster3 = new Propulsor("A03", 50, 0);
   let rocket2Booster4 = new Propulsor("A04", 50, 0);
@@ -57,6 +60,7 @@ function createRocket2() {
 
   myrocket2.maxSpeed();
   myrocket2.displayInfo();
+  control.classList.remove("hidden");
   console.log(myrocket2);
 
   accelButton.addEventListener("click", (e: Event) => {
@@ -79,6 +83,7 @@ function chooseRocket() {
     document.getElementById("rocketColor")
   )).value.toUpperCase();
   ready.classList.remove("hidden");
+  content.classList.add("hidden");
   if (color == "RED") {
     rocket2.classList.add("hidden");
     rocket1.classList.remove("hidden");

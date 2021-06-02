@@ -4,6 +4,8 @@ var rocket2 = document.getElementById("rocket2");
 var rocket1img = document.getElementById("rocket1img");
 var rocket2img = document.getElementById("rocket2img");
 var ready = document.getElementById("pressA");
+var content = document.getElementById("content");
+var control = document.getElementById("panel");
 var accelButton = document.getElementById("accelButton");
 var decelButton = document.getElementById("decelButton");
 var rocket1Id = "32WESSDS";
@@ -19,6 +21,7 @@ function createRocket1() {
     myrocket1.addBooster(rocket1Booster3);
     myrocket1.maxSpeed();
     myrocket1.displayInfo();
+    control.classList.remove("hidden");
     console.log(myrocket1);
     accelButton.addEventListener("click", function (e) {
         rocket1img.classList.remove("first", "decel");
@@ -35,7 +38,7 @@ function createRocket1() {
 }
 function createRocket2() {
     var myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
-    var rocket2Booster1 = new Propulsor("A01", 40, 0);
+    var rocket2Booster1 = new Propulsor("A01", 30, 0);
     var rocket2Booster2 = new Propulsor("A02", 40, 0);
     var rocket2Booster3 = new Propulsor("A03", 50, 0);
     var rocket2Booster4 = new Propulsor("A04", 50, 0);
@@ -50,6 +53,7 @@ function createRocket2() {
     myrocket2.addBooster(rocket2Booster6);
     myrocket2.maxSpeed();
     myrocket2.displayInfo();
+    control.classList.remove("hidden");
     console.log(myrocket2);
     accelButton.addEventListener("click", function (e) {
         rocket2img.classList.remove("first", "decel");
@@ -68,6 +72,7 @@ function createRocket2() {
 function chooseRocket() {
     var color = (document.getElementById("rocketColor")).value.toUpperCase();
     ready.classList.remove("hidden");
+    content.classList.add("hidden");
     if (color == "RED") {
         rocket2.classList.add("hidden");
         rocket1.classList.remove("hidden");
