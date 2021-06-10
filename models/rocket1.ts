@@ -49,10 +49,10 @@ class Rocket {
   }
 
   accelerate() {
-    for (let i = 0; i <= this.boosterArr.length - 1; i++) {
-      if (this.boosterArr[i].potenciaActual < this.boosterArr[i].potenciaMax) {
-        this.boosterArr[i].potenciaActual += 10;
-        this.currentSpead[i] = this.boosterArr[i].potenciaActual;
+    for (let i = 0; i <= this.currentSpead.length; i++) {
+      if (this.currentSpead[i] < this.propulsoresMax[i]) {
+        this.currentSpead[i] += 10;
+        console.log(this.currentSpead);
         let updateinfo = JSON.stringify(this.currentSpead);
         let currSpeadDisplay = document.getElementById(
           "currentSpeed"
@@ -63,10 +63,9 @@ class Rocket {
   }
 
   decelerate() {
-    for (let i = 0; i <= this.boosterArr.length - 1; i++) {
-      if (this.boosterArr[i].potenciaActual > 0) {
-        this.boosterArr[i].potenciaActual -= 10;
-        this.currentSpead[i] = this.boosterArr[i].potenciaActual;
+    for (let i = 0; i <= this.currentSpead.length; i++) {
+      if (this.currentSpead[i] > 0) {
+        this.currentSpead[i] -= 10;
         console.log(this.currentSpead);
         let updateinfo = JSON.stringify(this.currentSpead);
         let currSpeadDisplay = document.getElementById(

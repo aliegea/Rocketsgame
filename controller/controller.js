@@ -9,9 +9,13 @@ var control = document.getElementById("panel");
 var command = document.getElementById("command");
 var accelButton = document.getElementById("accelButton");
 var decelButton = document.getElementById("decelButton");
+var myrockets = [];
+var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
+var myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
+myrockets.push(myrocket1, myrocket2);
 // create rocket1
 function createRocket1() {
-    var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
+    // var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
     var rocket1Booster1 = new Propulsor("A01", 10, 0);
     var rocket1Booster2 = new Propulsor("A02", 30, 0);
     var rocket1Booster3 = new Propulsor("A03", 80, 0);
@@ -23,21 +27,10 @@ function createRocket1() {
     myrocket1.displayInfo();
     control.classList.remove("hidden");
     console.log(myrocket1);
-    accelButton.addEventListener("click", function (e) {
-        rocket1img.classList.remove("first", "decel");
-        rocket1img.classList.add("accel");
-        setTimeout(landing, 2000);
-        myrocket1.accelerate();
-    });
-    decelButton.addEventListener("click", function (e) {
-        rocket1img.classList.remove("accel", "first");
-        rocket1img.classList.add("decel");
-        setTimeout(landing, 2000);
-        myrocket1.decelerate();
-    });
+    return myrocket1;
 }
 function createRocket2() {
-    var myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
+    // let myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
     var rocket2Booster1 = new Propulsor("A01", 30, 0);
     var rocket2Booster2 = new Propulsor("A02", 40, 0);
     var rocket2Booster3 = new Propulsor("A03", 50, 0);
@@ -55,18 +48,6 @@ function createRocket2() {
     myrocket2.displayInfo();
     control.classList.remove("hidden");
     console.log(myrocket2);
-    accelButton.addEventListener("click", function (e) {
-        rocket2img.classList.remove("first", "decel");
-        rocket2img.classList.add("accel");
-        setTimeout(landing, 2000);
-        myrocket2.accelerate();
-    });
-    decelButton.addEventListener("click", function (e) {
-        rocket2img.classList.remove("accel", "first");
-        rocket2img.classList.add("decel");
-        setTimeout(landing, 2000);
-        myrocket2.decelerate();
-    });
 }
 // animationFunctions
 function chooseRocket() {
@@ -107,4 +88,32 @@ function startRace() {
 }
 function landing() {
     rocket1img.classList.remove("accel", "first", "decel");
+}
+function acceleration() {
+    setTimeout(landing, 2000);
+    if (rocket1.classList.contains("move")) {
+        var myrocket = myrockets[0];
+        var rocketimage = rocket1img;
+    }
+    else {
+        var myrocket = myrockets[1];
+        var rocketimage = rocket2img;
+    }
+    rocketimage.classList.remove("first", "decel");
+    rocketimage.classList.add("accel");
+    myrocket.accelerate();
+}
+function deceleration() {
+    setTimeout(landing, 2000);
+    if (rocket1.classList.contains("move")) {
+        var myrocket = myrockets[0];
+        var rocketimage = rocket1img;
+    }
+    else {
+        var myrocket = myrockets[1];
+        var rocketimage = rocket2img;
+    }
+    rocketimage.classList.remove("accel", "first");
+    rocketimage.classList.add("decel");
+    myrocket.decelerate();
 }
