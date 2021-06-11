@@ -10,9 +10,11 @@ var command = document.getElementById("command");
 var accelButton = document.getElementById("accelButton");
 var decelButton = document.getElementById("decelButton");
 var myrockets = [];
+var myrocketsimgs = [];
 var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
 var myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
 myrockets.push(myrocket1, myrocket2);
+myrocketsimgs.push(rocket1img, rocket2img);
 // create rocket1
 function createRocket1() {
     // var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
@@ -87,33 +89,38 @@ function startRace() {
     }
 }
 function landing() {
-    rocket1img.classList.remove("accel", "first", "decel");
+    for (var i = 0; i <= myrocketsimgs.length; i++)
+        myrocketsimgs[i].classList.remove("accel", "first", "decel");
 }
-function acceleration() {
-    setTimeout(landing, 2000);
-    if (rocket1.classList.contains("move")) {
-        var myrocket = myrockets[0];
-        var rocketimage = rocket1img;
+function rocket_accel() {
+    for (var i = 0; i <= myrockets.length; i++) {
+        var rocket = document.getElementById("rocket" + (i + 1));
+        var rocketimg = document.getElementById("rocket" + (i + 1) + "img");
+        var myrocket = myrockets[i];
+        if (rocket == null) {
+            console.log("Rocket accelerating to the moon");
+        }
+        else {
+            setTimeout(landing, 2000);
+            rocketimg.classList.remove("first", "decel");
+            rocketimg.classList.add("accel");
+            myrocket.accelerate();
+        }
     }
-    else {
-        var myrocket = myrockets[1];
-        var rocketimage = rocket2img;
-    }
-    rocketimage.classList.remove("first", "decel");
-    rocketimage.classList.add("accel");
-    myrocket.accelerate();
 }
-function deceleration() {
-    setTimeout(landing, 2000);
-    if (rocket1.classList.contains("move")) {
-        var myrocket = myrockets[0];
-        var rocketimage = rocket1img;
+function rocket_decel() {
+    for (var i = 0; i <= myrockets.length; i++) {
+        var rocket = document.getElementById("rocket" + (i + 1));
+        var rocketimg = document.getElementById("rocket" + (i + 1) + "img");
+        var myrocket = myrockets[i];
+        if (rocket == null) {
+            console.log("Rocket decelerating to the moon");
+        }
+        else {
+            setTimeout(landing, 2000);
+            rocketimg.classList.remove("accel", "first");
+            rocketimg.classList.add("decel");
+            myrocket.decelerate();
+        }
     }
-    else {
-        var myrocket = myrockets[1];
-        var rocketimage = rocket2img;
-    }
-    rocketimage.classList.remove("accel", "first");
-    rocketimage.classList.add("decel");
-    myrocket.decelerate();
 }

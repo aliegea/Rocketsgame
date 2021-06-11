@@ -42,7 +42,6 @@ var Rocket = /** @class */ (function () {
         for (var i = 0; i <= this.currentSpead.length; i++) {
             if (this.currentSpead[i] < this.propulsoresMax[i]) {
                 this.currentSpead[i] += 10;
-                console.log(this.currentSpead);
                 var updateinfo = JSON.stringify(this.currentSpead);
                 var currSpeadDisplay = document.getElementById("currentSpeed");
                 currSpeadDisplay.textContent = updateinfo;
@@ -53,7 +52,6 @@ var Rocket = /** @class */ (function () {
         for (var i = 0; i <= this.currentSpead.length; i++) {
             if (this.currentSpead[i] > 0) {
                 this.currentSpead[i] -= 10;
-                console.log(this.currentSpead);
                 var updateinfo = JSON.stringify(this.currentSpead);
                 var currSpeadDisplay = document.getElementById("currentSpeed");
                 currSpeadDisplay.textContent = updateinfo;

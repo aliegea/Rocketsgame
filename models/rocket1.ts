@@ -52,7 +52,6 @@ class Rocket {
     for (let i = 0; i <= this.currentSpead.length; i++) {
       if (this.currentSpead[i] < this.propulsoresMax[i]) {
         this.currentSpead[i] += 10;
-        console.log(this.currentSpead);
         let updateinfo = JSON.stringify(this.currentSpead);
         let currSpeadDisplay = document.getElementById(
           "currentSpeed"
@@ -66,7 +65,6 @@ class Rocket {
     for (let i = 0; i <= this.currentSpead.length; i++) {
       if (this.currentSpead[i] > 0) {
         this.currentSpead[i] -= 10;
-        console.log(this.currentSpead);
         let updateinfo = JSON.stringify(this.currentSpead);
         let currSpeadDisplay = document.getElementById(
           "currentSpeed"

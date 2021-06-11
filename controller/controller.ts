@@ -1,7 +1,7 @@
 const rocket1 = document.getElementById("rocket1") as HTMLDivElement;
 const rocket2 = <HTMLDivElement>document.getElementById("rocket2");
-const rocket1img = <HTMLInputElement>document.getElementById("rocket1img");
-const rocket2img = <HTMLInputElement>document.getElementById("rocket2img");
+const rocket1img = document.getElementById("rocket1img") as HTMLImageElement;
+const rocket2img = document.getElementById("rocket2img") as HTMLImageElement;
 const ready = <HTMLDivElement>document.getElementById("pressA");
 const content = document.getElementById("content") as HTMLDivElement;
 const control = document.getElementById("panel") as HTMLDivElement;
@@ -9,9 +9,11 @@ const command = document.getElementById("command") as HTMLButtonElement;
 const accelButton = document.getElementById("accelButton") as HTMLButtonElement;
 const decelButton = document.getElementById("decelButton") as HTMLButtonElement;
 const myrockets: Rocket[] = [];
+const myrocketsimgs: any[] = [];
 var myrocket1 = new Rocket("32WESSDS", [], [], [], false);
 let myrocket2 = new Rocket("LDSFJA32", [], [], [], false);
 myrockets.push(myrocket1, myrocket2);
+myrocketsimgs.push(rocket1img, rocket2img);
 
 // create rocket1
 function createRocket1() {
@@ -98,31 +100,41 @@ function startRace() {
 }
 
 function landing() {
-  rocket1img.classList.remove("accel", "first", "decel");
+  for (let i = 0; i <= myrocketsimgs.length; i++)
+    myrocketsimgs[i].classList.remove("accel", "first", "decel");
 }
-function acceleration() {
-  setTimeout(landing, 2000);
-  if (rocket1.classList.contains("move")) {
-    var myrocket: Rocket = myrockets[0];
-    var rocketimage = rocket1img;
-  } else {
-    var myrocket: Rocket = myrockets[1];
-    var rocketimage = rocket2img;
+
+function rocket_accel() {
+  for (let i = 0; i <= myrockets.length; i++) {
+    let rocket = document.getElementById("rocket" + (i + 1)) as HTMLDivElement;
+    let rocketimg = document.getElementById(
+      "rocket" + (i + 1) + "img"
+    ) as HTMLImageElement;
+    var myrocket: Rocket = myrockets[i];
+    if (rocket == null) {
+      console.log(`Rocket accelerating to the moon`);
+    } else {
+      setTimeout(landing, 2000);
+      rocketimg.classList.remove("first", "decel");
+      rocketimg.classList.add("accel");
+      myrocket.accelerate();
+    }
   }
-  rocketimage.classList.remove("first", "decel");
-  rocketimage.classList.add("accel");
-  myrocket.accelerate();
 }
-function deceleration() {
-  setTimeout(landing, 2000);
-  if (rocket1.classList.contains("move")) {
-    var myrocket: Rocket = myrockets[0];
-    var rocketimage = rocket1img;
-  } else {
-    var myrocket: Rocket = myrockets[1];
-    var rocketimage = rocket2img;
+function rocket_decel() {
+  for (let i = 0; i <= myrockets.length; i++) {
+    let rocket = document.getElementById("rocket" + (i + 1)) as HTMLDivElement;
+    let rocketimg = document.getElementById(
+      "rocket" + (i + 1) + "img"
+    ) as HTMLImageElement;
+    var myrocket: Rocket = myrockets[i];
+    if (rocket == null) {
+      console.log(`Rocket decelerating to the moon`);
+    } else {
+      setTimeout(landing, 2000);
+      rocketimg.classList.remove("accel", "first");
+      rocketimg.classList.add("decel");
+      myrocket.decelerate();
+    }
   }
-  rocketimage.classList.remove("accel", "first");
-  rocketimage.classList.add("decel");
-  myrocket.decelerate();
 }
